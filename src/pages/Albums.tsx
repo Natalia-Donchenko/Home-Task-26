@@ -11,19 +11,19 @@ const Albums: React.FC = () => {
   const [albums, setAlbums] = useState<IAlbum[]>([]);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData(): Promise<void> {
       const response = await fetch(`https://jsonplaceholder.typicode.com/albums?userId=${userId}`);
       const jsonData = await response.json();
-        setAlbums(jsonData);
+      setAlbums(jsonData);
     }
     fetchData();
-  }, []);
+  }, [userId]);
 
   return (
     <div className="container">
       {albums.length > 0 ? (
         <ul className="albums__list">
-          {albums.map((album: IAlbum) => (
+          {albums.map((album: IAlbum): JSX.Element => (
             <li key={album.id} className="albums__list-item">
               <Link to={`/photos?albumId=${album.id}`}>
                 {album.title}

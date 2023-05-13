@@ -2,12 +2,13 @@ import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { IUser } from "../utils/types";
 
+type UsersProps = {};
 
-const Users: React.FC = () => {
+const Users: React.FC<UsersProps> = () => {
   const [users, setUsers] = useState<IUser[]>([]);
 
   useEffect(() => {
-    async function fetchData() {
+    async function fetchData(): Promise<void> {
       const response = await fetch("https://jsonplaceholder.typicode.com/users");
       const jsonData = await response.json();
       setUsers(jsonData);

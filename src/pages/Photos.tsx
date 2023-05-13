@@ -23,7 +23,7 @@ const Photos: React.FC = () => {
     <>
       <div className="container">
         <ul className="photos__list">
-          {photos.map((photo: IPhoto) => (
+          {photos.map((photo: IPhoto): JSX.Element => (
             <li key={photo.id} className="photos__list-item">
               <Link to={`/photo/${photo.id}`}>
                 <img src={photo.thumbnailUrl} alt={photo.title} />
