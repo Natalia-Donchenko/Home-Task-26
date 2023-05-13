@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useAppDispatch, useAppSelector } from "../hook";
-import { isDoneTodo } from "../store/todoSlice";
+import {isDoneTodo } from "../store/todoSlice";
+import { ITodo } from "../utils/types";
 import AddTodo from "./AddTodo";
 import EditTodo from "./EditTodo";
 import ImportantBtn from "./btns/ImportantBtn";
@@ -31,7 +32,7 @@ const ListTodo: React.FC = () => {
 
       <ul className="list-wrapper">
         {
-          todoList.map((state) => {
+          todoList.map((state: ITodo) => {
             return (
               <li className="list-item" key={state.id}>
                 <input 

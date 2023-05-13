@@ -9,11 +9,11 @@ interface IEditTodoProps {
   isEditing: boolean,
 };
 
-const EditTodo: React.FC<IEditTodoProps> = ({  setEditing, isEditing, setTodo, todo}) => {
+const EditTodo: React.FC<IEditTodoProps> = ({ setEditing, isEditing, setTodo, todo}) => {
   
   const { text, id } = todo;
   
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void => {
     setTodo({...todo, [e.target.name]: e.target.value});
   };
 

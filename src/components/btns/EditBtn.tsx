@@ -6,13 +6,13 @@ interface IEditBtnProps {
   setTodo: React.Dispatch<React.SetStateAction<{
     text: string;
     id: string
-}>>,
+  }>>,
   todo: {}
 };
 
 const EditBtn: React.FC<IEditBtnProps> = ({ done, id, text, setEditing, setTodo, todo }) => {
 
-  const onEditToggle = (id: string, text: string) => {
+  const onEditToggle = (id: string, text: string): void => {
     setEditing(true);
     setTodo({...todo, id, text});
   };
@@ -21,7 +21,7 @@ const EditBtn: React.FC<IEditBtnProps> = ({ done, id, text, setEditing, setTodo,
     <button
       type="button"
       className={done ? "btn-done" : "optional-btn"}
-      onClick={() =>onEditToggle(id, text)}
+      onClick={() => onEditToggle(id, text)}
     >
       edit
     </button>

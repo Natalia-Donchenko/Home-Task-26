@@ -2,13 +2,18 @@ import React, { useState } from "react";
 import AddBtn from "./btns/AddBtn";
 import { ChangeEvent } from "react";
 
+interface IAddTodo {
+  text: string;
+}
+
+
 const AddTodo: React.FC = () => {
-  const [ todo, setTodo] = useState({
+  const [ todo, setTodo] = useState<IAddTodo>({
     text: ""
   });
   const { text } = todo;
    
-  const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
+  const handleChange = (e: ChangeEvent<HTMLInputElement>): void =>{
     setTodo({...todo, [e.target.name]: e.target.value});
   };
 

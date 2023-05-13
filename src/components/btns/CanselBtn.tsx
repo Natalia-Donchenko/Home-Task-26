@@ -1,12 +1,11 @@
-
 interface ICanselBtnProps {
-  setEditing: React.Dispatch<React.SetStateAction<boolean>>
-  isEditing: boolean
+  setEditing: React.Dispatch<React.SetStateAction<boolean>>;
+  isEditing: boolean;
 };
 
 const CanselBtn: React.FC<ICanselBtnProps> = ({ setEditing, isEditing }) => {
 
-  const canselEdit = () => {
+  const canselEdit = (): void => {
     setEditing(!isEditing);
   };
 

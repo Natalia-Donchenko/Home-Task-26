@@ -9,11 +9,15 @@ const DeleteBtn: React.FC<IDeleteBtnProps> = ({ id }) => {
 
   const dispatch = useAppDispatch(); 
 
+  const handleDeleteClick = (): void => {
+    dispatch(deleteTodo(id));
+  }
+
   return (
     <button
       type="button"
       className="optional-btn"
-      onClick={() => dispatch(deleteTodo(id))}
+      onClick={handleDeleteClick}
     >
       delete
     </button>

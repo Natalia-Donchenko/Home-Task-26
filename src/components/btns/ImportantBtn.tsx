@@ -11,10 +11,14 @@ const ImportantBtn: React.FC<IImportantBtnProps> = ({ id, done, important}) => {
 
   const dispatch = useAppDispatch();
 
+  const handleIsImportant = (): void => {
+    dispatch(isImportant(id));
+  };
+
   return (
     <button
       type="button"
-      onClick={() => dispatch(isImportant(id))}
+      onClick={handleIsImportant}
       className={ done ? "btn-done": "" || important ? "imp-btn" : "optional-btn"}
     >
       important

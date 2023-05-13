@@ -13,13 +13,13 @@ const UpdateBtn: React.FC<IUpdateBtnProps> = ({ text, setTodo, todo, id, setEdit
   
   const dispatch = useAppDispatch();
 
-  const edit = () =>{
+  const edit = (): void =>{
     if (text === "") {
       setTodo({todo});
       return;
     };
     
-    dispatch((editTodo({ text, id })));
+    dispatch(editTodo({ text, id }));
     setEditing(false);
   };
 

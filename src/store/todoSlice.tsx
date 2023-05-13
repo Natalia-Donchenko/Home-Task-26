@@ -1,21 +1,6 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { ITodo, ITodosState, IeditTodo} from "../utils/types";
 
-interface ITodo {
-  id: string
-  text: string
-  edit: boolean
-  done: boolean
-  important: boolean
-};
-
-interface ITodosState {
-  todoList: ITodo[]
-};
-
-interface IeditTodo {
-  id: string
-  text: string
-};
 
 const initialState: ITodosState = {
   todoList: []

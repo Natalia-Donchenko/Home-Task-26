@@ -4,23 +4,23 @@ import { addTodo } from "../../store/todoSlice";
 interface IAddBtnProps {
   setTodo: React.Dispatch<React.SetStateAction<{
     text: string;
-}>>
-  todo: any
-  text: string,
+  }>>;
+  todo: { text: string };
+  text: string;
 };
 
 const AddBtn: React.FC<IAddBtnProps> = ({ setTodo, todo, text }) => {
   
   const dispatch = useAppDispatch();
 
-  const add = () => {
+  const add = (): void => {
     if(text === "") {
       setTodo({...todo});
     };
     
     dispatch(addTodo(text));
     setTodo({...todo, text: ""});
-  }
+  };
   return (
     <button 
       type="button" 
