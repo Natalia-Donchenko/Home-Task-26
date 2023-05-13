@@ -1,33 +1,28 @@
-import React, { useState } from 'react';
-import { useAppDispatch, useAppSelector } from '../hook';
-import { isDoneTodo } from '../store/todoSlice';
-import AddTodo from './AddTodo';
-import EditTodo from './EditTodo'
-import ImportantBtn from './btns/ImportantBtn'
-import EditBtn from './btns/EditBtn';
-import DeleteBtn from './btns/DeleteBtn';
-
-
+import React, { useState } from "react";
+import { useAppDispatch, useAppSelector } from "../hook";
+import { isDoneTodo } from "../store/todoSlice";
+import AddTodo from "./AddTodo";
+import EditTodo from "./EditTodo";
+import ImportantBtn from "./btns/ImportantBtn";
+import EditBtn from "./btns/EditBtn";
+import DeleteBtn from "./btns/DeleteBtn";
 
 const ListTodo: React.FC = () => {
 
   const dispatch = useAppDispatch();
   const todoList  = useAppSelector((state) => state.todo.todoList);
   const [ isEditing, setEditing ] = useState(false); 
-  const [ state, setState ] = useState('');
-  // const { text, id } = state;
+  const [ todo, setTodo ] = useState({});
 
   return (
     <div>
       {
         isEditing ? (
           <EditTodo 
-          setState={setState} 
-          state={state}
+          setTodo={setTodo} 
+          todo={todo}
           setEditing={setEditing} 
           isEditing={isEditing}
-          // text={text} 
-          // id={id}
           />
         ) : (
           <AddTodo />
@@ -36,17 +31,17 @@ const ListTodo: React.FC = () => {
 
       <ul className="list-wrapper">
         {
-          todoList.map((state)=> {
+          todoList.map((state) => {
             return (
               <li className="list-item" key={state.id}>
                 <input 
-                  type='checkbox'
+                  type="checkbox"
                   onChange={() => dispatch(isDoneTodo(state.id))}
                 />
 
                 <div className={state.done ? "done" : ""  || state.important ? " important" : "" }>
                   <div className="list-text">
-                    <span className='text'>{state.text}</span>
+                    <span className="text">{state.text}</span>
                   </div>
                 </div>
 
@@ -62,8 +57,8 @@ const ListTodo: React.FC = () => {
                     id={state.id} 
                     text={state.text}
                     setEditing={setEditing}
-                    setState={setState} 
-                    state={state}
+                    setTodo={setTodo} 
+                    todo={todo}
                   />
 
                   <DeleteBtn 

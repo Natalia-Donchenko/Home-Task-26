@@ -2,28 +2,28 @@ import { useAppDispatch } from "../../hook";
 import { addTodo } from "../../store/todoSlice";
 
 interface IAddBtnProps {
-  setState: any
-  state: any,
+  setTodo: React.Dispatch<React.SetStateAction<{
+    text: string;
+}>>
+  todo: any
   text: string,
-}
+};
 
-
-const AddBtn: React.FC<IAddBtnProps> = ({ setState, state, text }) => {
-
+const AddBtn: React.FC<IAddBtnProps> = ({ setTodo, todo, text }) => {
+  
   const dispatch = useAppDispatch();
 
   const add = () => {
-    if(text === '') {
-      setState({...state});
+    if(text === "") {
+      setTodo({...todo});
     };
     
-    // dispatch(addTodo({newText: text}));
     dispatch(addTodo(text));
-    setState({...state, text: ''});
+    setTodo({...todo, text: ""});
   }
   return (
     <button 
-      type='button' 
+      type="button" 
       className="addTask-btn"
       onClick={add}
     >

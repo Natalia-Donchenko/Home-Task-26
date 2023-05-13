@@ -1,12 +1,11 @@
 import { useAppDispatch } from "../../hook";
 import { isImportant } from "../../store/todoSlice";
 
-
 interface IImportantBtnProps {
   id: string,
   done: boolean,
   important: boolean
-}
+};
 
 const ImportantBtn: React.FC<IImportantBtnProps> = ({ id, done, important}) => {
 

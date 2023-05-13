@@ -3,12 +3,11 @@ import { deleteTodo } from "../../store/todoSlice";
 
 interface IDeleteBtnProps {
   id: string
-}
-
+};
 
 const DeleteBtn: React.FC<IDeleteBtnProps> = ({ id }) => {
 
-  const dispatch = useAppDispatch()  
+  const dispatch = useAppDispatch(); 
 
   return (
     <button
@@ -18,7 +17,7 @@ const DeleteBtn: React.FC<IDeleteBtnProps> = ({ id }) => {
     >
       delete
     </button>
-  )
+  );
 };
 
 export default DeleteBtn;

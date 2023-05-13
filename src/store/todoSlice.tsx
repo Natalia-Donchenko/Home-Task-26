@@ -1,31 +1,28 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 
-
-type Todo = {
+interface ITodo {
   id: string
   text: string
   edit: boolean
   done: boolean
   important: boolean
-}
+};
 
-type TodosState = {
-  todoList: Todo[]
-}
+interface ITodosState {
+  todoList: ITodo[]
+};
 
-interface Edit {
+interface IeditTodo {
   id: string
-  newText: string
   text: string
-}
+};
 
-const initialState: TodosState = {
+const initialState: ITodosState = {
   todoList: []
-}
-
+};
 
 const TodoSlider = createSlice({
-  name: 'todo',
+  name: "todo",
   initialState,
 
   reducers: {
@@ -37,45 +34,35 @@ const TodoSlider = createSlice({
         done: false,
         important: false,
       })
-
     },
+
     deleteTodo: (state, action: PayloadAction<string>) => {
       let { todoList } = state;
-      state.todoList = todoList.filter((item) => item.id !== action.payload);
+      state.todoList = todoList.filter((item): boolean => item.id !== action.payload);
     },
-    editTodo: (state, action: PayloadAction<Edit>) => {
-      state.todoList = state.todoList.map((item) => {
 
-        console.log(item)
+    editTodo: (state, action: PayloadAction<IeditTodo>) => {
+      state.todoList = state.todoList.map((item): ITodo => {
         if (item.id === action.payload.id) {
           return {
             ...item,
-            text: action.payload.newText,
+            text: action.payload.text,
             edit: !item.edit,
           };
         }
         return item;
       });
-        
-
-
-
-      
-      // state.todoList = state.todoList.map((item) =>
-      //   item.id === action.payload ? { ...item, text: action.payload } : item
-      // );
-      // state.edit = !state.edit;
-      // console.log(state)
     },
 
     isDoneTodo: (state, action: PayloadAction<string>) => {
-      const todo = state.todoList.find((item) => item.id === action.payload);
+      const todo = state.todoList.find((item): boolean => item.id === action.payload);
       if (todo) {
         todo.done = !todo.done;
       }
     },
+
     isImportant: (state, action: PayloadAction<string>) => {
-      const todo = state.todoList.find((item) => item.id === action.payload);
+      const todo = state.todoList.find((item): boolean => item.id === action.payload);
       if (todo) {
         todo.important = !todo.important;
       }

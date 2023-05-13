@@ -3,34 +3,29 @@ import { editTodo } from "../../store/todoSlice";
 
 interface IUpdateBtnProps {
   text: string,
-  setState: React.Dispatch<React.SetStateAction<any>>,
-  state: any,
+  setTodo: React.Dispatch<React.SetStateAction<{}>>
+  todo: {},
   id: string,
   setEditing: React.Dispatch<React.SetStateAction<boolean>>,
-}
+};
 
-
-const UpdateBtn: React.FC<IUpdateBtnProps> = ({ text, setState, state, id, setEditing }) => {
+const UpdateBtn: React.FC<IUpdateBtnProps> = ({ text, setTodo, todo, id, setEditing }) => {
   
   const dispatch = useAppDispatch();
 
-  console.log(id)
-
   const edit = () =>{
-    if (text === '') {
-      setState(state);
+    if (text === "") {
+      setTodo({todo});
       return;
-    }
+    };
     
-    dispatch((editTodo(text, id)));
-    // dispatch((editTodo(id)));
+    dispatch((editTodo({ text, id })));
     setEditing(false);
-    
- };
+  };
 
   return (
     <button 
-      type='button' 
+      type="button" 
       className="editing-btn addTask-btn" 
       onClick={edit}
     >

@@ -1,32 +1,32 @@
-import React, { useState } from 'react';
-import AddBtn from './btns/AddBtn';
-import { ChangeEvent } from "react"
+import React, { useState } from "react";
+import AddBtn from "./btns/AddBtn";
+import { ChangeEvent } from "react";
 
 const AddTodo: React.FC = () => {
-  const [ state, setState ] = useState({
-    text: ''
+  const [ todo, setTodo] = useState({
+    text: ""
   });
-  const { text } = state;
+  const { text } = todo;
    
   const handleChange = (e: ChangeEvent<HTMLInputElement>) =>{
-    setState({...state, [e.target.name]: e.target.value});
+    setTodo({...todo, [e.target.name]: e.target.value});
   };
 
   return  (
     <>
-    <div className='addTask'>
+    <div className="addTask">
       <input 
         className="task-input"
-        placeholder='What do you want to do?'
-        type='text' 
+        placeholder="What do you want to do?"
+        type="text" 
         value={text} 
-        name='text' 
+        name="text" 
         onChange={handleChange} 
       />
 
       <AddBtn 
-        setState={setState}
-        state={state} 
+        setTodo={setTodo}
+        todo={todo} 
         text = {text}
       />
     </div>

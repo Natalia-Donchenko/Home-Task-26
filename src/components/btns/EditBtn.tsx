@@ -3,17 +3,18 @@ interface IEditBtnProps {
   id: string,
   text: string,
   setEditing: React.Dispatch<React.SetStateAction<boolean>>,
-  setState: any,
-  state: any
-}
+  setTodo: React.Dispatch<React.SetStateAction<{
+    text: string;
+    id: string
+}>>,
+  todo: {}
+};
 
-const EditBtn: React.FC<IEditBtnProps> = ({ done, id, text, setEditing, setState, state }) => {
+const EditBtn: React.FC<IEditBtnProps> = ({ done, id, text, setEditing, setTodo, todo }) => {
 
-  
   const onEditToggle = (id: string, text: string) => {
-
     setEditing(true);
-    setState({...state, id, text});
+    setTodo({...todo, id, text});
   };
 
   return (
@@ -24,7 +25,7 @@ const EditBtn: React.FC<IEditBtnProps> = ({ done, id, text, setEditing, setState
     >
       edit
     </button>
-  )
+  );
 };
 
 export default EditBtn;
